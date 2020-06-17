@@ -1,0 +1,14 @@
+{
+  "name": "easyttv-neon",
+  "version": "0.1.0",
+  "description": "My easyTTV wrapper, rewritten in Rust by using Neon",
+  "main": "lib/index.js",
+  "author": "FlareonTheProgrammer <theinnovator64@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "neon-cli": "^0.4.0"
+  },
+  "scripts": {
+    "install": "neon build"
+  }
+}
