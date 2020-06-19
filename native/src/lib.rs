@@ -2,6 +2,19 @@ use neon::prelude::*;
 use rand::Rng;
 use std::format;
 
+fn coin_flip(mut cx: FunctionContext) -> JsResult<JsString> {
+    let mut _reply = String::from("");
+    let prob = rand::thread_rng().gen_range(1,100002);
+    match prob {
+        1..=50000 => _reply = String::from("Heads!"),
+        50001..=100000 => _reply = String::from("Tails!"),
+        100001 => _reply = String::from("It... landed on its side?"),
+        _ => panic!(),
+    }
+
+    Ok(cx.string(_reply))
+}
+
 fn do_act(mut cx: FunctionContext) -> JsResult<JsString> {
     let acts = ["write about", "draw"];
     let subjects = ["landscape", "camping trip", "sunset"];
@@ -22,7 +35,8 @@ fn rn_gen(mut cx: FunctionContext) -> JsResult<JsNumber> {
 }
 
 register_module!(mut cx, {
+    cx.export_function("coinFlip", coin_flip)?;
     cx.export_function("doAct", do_act)?;
-    cx.export_function("rnGen", rn_gen)?;
+    cx.export_function("rng", rn_gen)?;
     Ok(())
 });
