@@ -17,4 +17,3 @@ neon-build = "0.4.0"
 [dependencies]
 neon = "0.4.0"
 rand = "0.5.5"
-ferris-says = "0.1"
